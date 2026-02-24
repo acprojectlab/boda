@@ -6,6 +6,28 @@
     <title>Nuestra Boda</title>
 
     <style>
+      #musicBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition:
+          transform 0.2s ease,
+          background 0.3s ease;
+      }
+
+      #musicBtn:hover {
+        transform: scale(1.1);
+        background: rgba(0, 0, 0, 0.8);
+      }
       body {
         margin: 0;
         font-family: "Segoe UI", sans-serif;
@@ -52,6 +74,24 @@
       <h1>Nos Casamos</h1>
       <h2 id="mensajePersonalizado">Te invitamos</h2>
     </div>
+    <button id="musicBtn">🎵</button>
+    <script>
+      const audio = new Audio("assets/musica/JR.mp3");
+      audio.loop = true;
+      audio.volume = 0.6;
+
+      const btn = document.getElementById("musicBtn");
+
+      btn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          btn.textContent = "🔊";
+        } else {
+          audio.pause();
+          btn.textContent = "🎵";
+        }
+      });
+    </script>
 
     <div class="section">
       <h2>Faltan</h2>
@@ -108,7 +148,7 @@
       }, 1000);
 
       // Botón WhatsApp
-      const numero = "573001234567"; // Cambia por tu número
+      const numero = "573214035455"; // Cambia por tu número
       const mensaje = `Confirmamos asistencia: ${invitado}`;
       const enlace = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
@@ -116,3 +156,4 @@
     </script>
   </body>
 </html>
+
